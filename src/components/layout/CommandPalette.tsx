@@ -18,7 +18,7 @@ export function CommandPalette({ open, onOpenChange }: { open: boolean; onOpenCh
       onOpenChange(false);
       navigate({ to });
     };
-    const shortcuts: Item[] = [
+    const pages: [string, string][] = [
       ["Today", "/"],
       ["Action Centre", "/action-centre"],
       ["Clients", "/clients"],
@@ -33,7 +33,8 @@ export function CommandPalette({ open, onOpenChange }: { open: boolean; onOpenCh
       ["Calendar", "/calendar"],
       ["Reports", "/reports"],
       ["Integrations", "/integrations"],
-    ].map(([label, to]) => ({ id: `nav-${to}`, group: "Navigate", label, hint: to, icon: ArrowRight, go: nav(to) }));
+    ];
+    const shortcuts: Item[] = pages.map(([label, to]) => ({ id: `nav-${to}`, group: "Navigate", label, hint: to, icon: ArrowRight, go: nav(to) }));
 
     const cl: Item[] = clients.map((c) => ({
       id: `c-${c.id}`,
@@ -96,7 +97,7 @@ export function CommandPalette({ open, onOpenChange }: { open: boolean; onOpenCh
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent showCloseButton={false} className="top-[15%] translate-y-0 gap-0 overflow-hidden p-0 sm:max-w-xl shadow-float">
+      <DialogContent className="top-[15%] translate-y-0 gap-0 overflow-hidden p-0 sm:max-w-xl shadow-float [&>button:last-child]:hidden">
         <DialogTitle className="sr-only">Command palette</DialogTitle>
         <div className="flex items-center gap-3 border-b px-4">
           <Search className="size-4 text-muted-foreground" />
