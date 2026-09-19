@@ -257,11 +257,16 @@ export const advisers = [
   { name: "Amara Naidoo", clients: 73, avg_claim_days: 22, health: 78 },
 ];
 
-export const formatZAR = (n: number) =>
-  new Intl.NumberFormat("en-ZA", { style: "currency", currency: "ZAR", maximumFractionDigits: 0 }).format(n).replace("ZAR", "R");
+export const formatZAR = (n: number) => {
+  const abs = Math.round(Math.abs(n)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
+  return `${n < 0 ? "-" : ""}R\u00a0${abs}`;
+};
 
-export const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+export const formatDate = (iso: string) => {
+  const d = new Date(iso);
+  return `${String(d.getUTCDate()).padStart(2, "0")} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+};
 
 export const initials = (name: string) =>
   name
