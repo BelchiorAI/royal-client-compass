@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, Clock, ShieldAlert, FileSignature, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { claims, clients, communications, formatDate, formatZAR, tasks as seed, CURRENT_USER } from "@/api/mock";
 import { Avatar, MetricCard, PageHeader, Pill, SectionCard, btn, statusTone } from "@/components/shared/primitives";
@@ -25,7 +25,10 @@ function Today() {
     setTasks((p) => p.map((t) => (t.id === id ? { ...t, done: true } : t)));
     toast.success("Task completed");
   };
-  const today = new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+  const [today, setToday] = useState("Today");
+  useEffect(() => {
+    setToday(new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" }));
+  }, []);
 
   return (
     <div className="space-y-6 animate-fade-up">

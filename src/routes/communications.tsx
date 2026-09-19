@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, MessageCircle, Smartphone, ArrowDownLeft, ArrowUpRight, Sparkles, Search, Reply, ExternalLink } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
-import { communications } from "@/api/mock";
+import { communications, formatDate } from "@/api/mock";
 import type { CommunicationEntry } from "@/api/types";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Avatar, PageHeader, Pill, btn } from "@/components/shared/primitives";
@@ -30,8 +30,11 @@ const channelMeta = {
   push: { label: "Push", icon: Smartphone, tone: "neutral" as const },
 };
 
-const fmtTime = (iso: string | null) =>
-  iso ? new Date(iso).toLocaleString("en-GB", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" }) : "—";
+const fmtTime = (iso: string | null) => {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return `${formatDate(iso)}, ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
+};
 
 function CommsPage() {
   const [channel, setChannel] = useState<Channel>("all");
