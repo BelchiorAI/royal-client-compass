@@ -10,15 +10,41 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActionCentreRouteImport } from './routes/action-centre'
+import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as ClaimsRouteImport } from './routes/claims'
 import { Route as CommunicationsRouteImport } from './routes/communications'
 import { Route as ComplianceRouteImport } from './routes/compliance'
+import { Route as FinancialPlanningRouteImport } from './routes/financial-planning'
+import { Route as GoalsRouteImport } from './routes/goals'
+import { Route as IntegrationsRouteImport } from './routes/integrations'
+import { Route as InvestmentsRouteImport } from './routes/investments'
+import { Route as PoliciesRouteImport } from './routes/policies'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ClientsIndexRouteImport } from './routes/clients.index'
 import { Route as ClientsIdRouteImport } from './routes/clients.$id'
+import { Route as DocumentsIndexRouteImport } from './routes/documents.index'
+import { Route as DocumentsESignaturesRouteImport } from './routes/documents.e-signatures'
+import { Route as DocumentsTemplatesRouteImport } from './routes/documents.templates'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActionCentreRoute = ActionCentreRouteImport.update({
+  id: '/action-centre',
+  path: '/action-centre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClaimsRoute = ClaimsRouteImport.update({
+  id: '/claims',
+  path: '/claims',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommunicationsRoute = CommunicationsRouteImport.update({
@@ -29,6 +55,31 @@ const CommunicationsRoute = CommunicationsRouteImport.update({
 const ComplianceRoute = ComplianceRouteImport.update({
   id: '/compliance',
   path: '/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancialPlanningRoute = FinancialPlanningRouteImport.update({
+  id: '/financial-planning',
+  path: '/financial-planning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GoalsRoute = GoalsRouteImport.update({
+  id: '/goals',
+  path: '/goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationsRoute = IntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestmentsRoute = InvestmentsRouteImport.update({
+  id: '/investments',
+  path: '/investments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliciesRoute = PoliciesRouteImport.update({
+  id: '/policies',
+  path: '/policies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReportsRoute = ReportsRouteImport.update({
@@ -46,66 +97,158 @@ const ClientsIdRoute = ClientsIdRouteImport.update({
   path: '/clients/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentsIndexRoute = DocumentsIndexRouteImport.update({
+  id: '/documents/',
+  path: '/documents/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsESignaturesRoute = DocumentsESignaturesRouteImport.update({
+  id: '/documents/e-signatures',
+  path: '/documents/e-signatures',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsTemplatesRoute = DocumentsTemplatesRouteImport.update({
+  id: '/documents/templates',
+  path: '/documents/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/action-centre': typeof ActionCentreRoute
+  '/calendar': typeof CalendarRoute
+  '/claims': typeof ClaimsRoute
   '/communications': typeof CommunicationsRoute
   '/compliance': typeof ComplianceRoute
+  '/financial-planning': typeof FinancialPlanningRoute
+  '/goals': typeof GoalsRoute
+  '/integrations': typeof IntegrationsRoute
+  '/investments': typeof InvestmentsRoute
+  '/policies': typeof PoliciesRoute
   '/reports': typeof ReportsRoute
   '/clients/$id': typeof ClientsIdRoute
+  '/documents/e-signatures': typeof DocumentsESignaturesRoute
+  '/documents/templates': typeof DocumentsTemplatesRoute
   '/clients/': typeof ClientsIndexRoute
+  '/documents/': typeof DocumentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/action-centre': typeof ActionCentreRoute
+  '/calendar': typeof CalendarRoute
+  '/claims': typeof ClaimsRoute
   '/communications': typeof CommunicationsRoute
   '/compliance': typeof ComplianceRoute
+  '/financial-planning': typeof FinancialPlanningRoute
+  '/goals': typeof GoalsRoute
+  '/integrations': typeof IntegrationsRoute
+  '/investments': typeof InvestmentsRoute
+  '/policies': typeof PoliciesRoute
   '/reports': typeof ReportsRoute
   '/clients/$id': typeof ClientsIdRoute
+  '/documents/e-signatures': typeof DocumentsESignaturesRoute
+  '/documents/templates': typeof DocumentsTemplatesRoute
   '/clients': typeof ClientsIndexRoute
+  '/documents': typeof DocumentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/action-centre': typeof ActionCentreRoute
+  '/calendar': typeof CalendarRoute
+  '/claims': typeof ClaimsRoute
   '/communications': typeof CommunicationsRoute
   '/compliance': typeof ComplianceRoute
+  '/financial-planning': typeof FinancialPlanningRoute
+  '/goals': typeof GoalsRoute
+  '/integrations': typeof IntegrationsRoute
+  '/investments': typeof InvestmentsRoute
+  '/policies': typeof PoliciesRoute
   '/reports': typeof ReportsRoute
   '/clients/$id': typeof ClientsIdRoute
+  '/documents/e-signatures': typeof DocumentsESignaturesRoute
+  '/documents/templates': typeof DocumentsTemplatesRoute
   '/clients/': typeof ClientsIndexRoute
+  '/documents/': typeof DocumentsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/action-centre'
+    | '/calendar'
+    | '/claims'
     | '/communications'
     | '/compliance'
+    | '/financial-planning'
+    | '/goals'
+    | '/integrations'
+    | '/investments'
+    | '/policies'
     | '/reports'
     | '/clients/$id'
+    | '/documents/e-signatures'
+    | '/documents/templates'
     | '/clients/'
+    | '/documents/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/action-centre'
+    | '/calendar'
+    | '/claims'
     | '/communications'
     | '/compliance'
+    | '/financial-planning'
+    | '/goals'
+    | '/integrations'
+    | '/investments'
+    | '/policies'
     | '/reports'
     | '/clients/$id'
+    | '/documents/e-signatures'
+    | '/documents/templates'
     | '/clients'
+    | '/documents'
   id:
     | '__root__'
     | '/'
+    | '/action-centre'
+    | '/calendar'
+    | '/claims'
     | '/communications'
     | '/compliance'
+    | '/financial-planning'
+    | '/goals'
+    | '/integrations'
+    | '/investments'
+    | '/policies'
     | '/reports'
     | '/clients/$id'
+    | '/documents/e-signatures'
+    | '/documents/templates'
     | '/clients/'
+    | '/documents/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActionCentreRoute: typeof ActionCentreRoute
+  CalendarRoute: typeof CalendarRoute
+  ClaimsRoute: typeof ClaimsRoute
   CommunicationsRoute: typeof CommunicationsRoute
   ComplianceRoute: typeof ComplianceRoute
+  FinancialPlanningRoute: typeof FinancialPlanningRoute
+  GoalsRoute: typeof GoalsRoute
+  IntegrationsRoute: typeof IntegrationsRoute
+  InvestmentsRoute: typeof InvestmentsRoute
+  PoliciesRoute: typeof PoliciesRoute
   ReportsRoute: typeof ReportsRoute
   ClientsIdRoute: typeof ClientsIdRoute
+  DocumentsESignaturesRoute: typeof DocumentsESignaturesRoute
+  DocumentsTemplatesRoute: typeof DocumentsTemplatesRoute
   ClientsIndexRoute: typeof ClientsIndexRoute
+  DocumentsIndexRoute: typeof DocumentsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -115,6 +258,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/action-centre': {
+      id: '/action-centre'
+      path: '/action-centre'
+      fullPath: '/action-centre'
+      preLoaderRoute: typeof ActionCentreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claims': {
+      id: '/claims'
+      path: '/claims'
+      fullPath: '/claims'
+      preLoaderRoute: typeof ClaimsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/communications': {
@@ -129,6 +293,41 @@ declare module '@tanstack/react-router' {
       path: '/compliance'
       fullPath: '/compliance'
       preLoaderRoute: typeof ComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financial-planning': {
+      id: '/financial-planning'
+      path: '/financial-planning'
+      fullPath: '/financial-planning'
+      preLoaderRoute: typeof FinancialPlanningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/goals': {
+      id: '/goals'
+      path: '/goals'
+      fullPath: '/goals'
+      preLoaderRoute: typeof GoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integrations': {
+      id: '/integrations'
+      path: '/integrations'
+      fullPath: '/integrations'
+      preLoaderRoute: typeof IntegrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investments': {
+      id: '/investments'
+      path: '/investments'
+      fullPath: '/investments'
+      preLoaderRoute: typeof InvestmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/policies': {
+      id: '/policies'
+      path: '/policies'
+      fullPath: '/policies'
+      preLoaderRoute: typeof PoliciesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reports': {
@@ -152,16 +351,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClientsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documents/': {
+      id: '/documents/'
+      path: '/documents'
+      fullPath: '/documents/'
+      preLoaderRoute: typeof DocumentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents/e-signatures': {
+      id: '/documents/e-signatures'
+      path: '/documents/e-signatures'
+      fullPath: '/documents/e-signatures'
+      preLoaderRoute: typeof DocumentsESignaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents/templates': {
+      id: '/documents/templates'
+      path: '/documents/templates'
+      fullPath: '/documents/templates'
+      preLoaderRoute: typeof DocumentsTemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActionCentreRoute: ActionCentreRoute,
+  CalendarRoute: CalendarRoute,
+  ClaimsRoute: ClaimsRoute,
   CommunicationsRoute: CommunicationsRoute,
   ComplianceRoute: ComplianceRoute,
+  FinancialPlanningRoute: FinancialPlanningRoute,
+  GoalsRoute: GoalsRoute,
+  IntegrationsRoute: IntegrationsRoute,
+  InvestmentsRoute: InvestmentsRoute,
+  PoliciesRoute: PoliciesRoute,
   ReportsRoute: ReportsRoute,
   ClientsIdRoute: ClientsIdRoute,
+  DocumentsESignaturesRoute: DocumentsESignaturesRoute,
+  DocumentsTemplatesRoute: DocumentsTemplatesRoute,
   ClientsIndexRoute: ClientsIndexRoute,
+  DocumentsIndexRoute: DocumentsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
