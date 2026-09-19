@@ -199,7 +199,7 @@ export function DocumentsTab({ client }: { client: ClientRecord }) {
                     <th className="px-3 py-2.5 font-semibold">Type</th>
                     <th className="px-3 py-2.5 font-semibold">Status</th>
                     <th className="px-3 py-2.5 font-semibold">Updated</th>
-                    <th className="px-3 py-2.5 font-semibold">Expiry Date</th>
+                    <th className="whitespace-nowrap px-3 py-2.5 font-semibold">Expiry Date</th>
                     <th className="w-12 px-3 py-2.5" />
                   </tr>
                 </thead>
@@ -237,19 +237,19 @@ export function DocumentsTab({ client }: { client: ClientRecord }) {
                         <td className="px-3 py-3">
                           <Pill tone={categoryTone[d.category]}>{d.category}</Pill>
                         </td>
-                        <td className="px-3 py-3 text-muted-foreground">{d.type}</td>
+                        <td className="whitespace-nowrap px-3 py-3 text-muted-foreground">{d.type}</td>
                         <td className="px-3 py-3">
                           <Pill dot tone={statusTone(d.status)}>
                             {d.status}
                           </Pill>
                         </td>
                         <td className="px-3 py-3">
-                          <p className="numeric text-[12.5px]">{formatDate(d.updatedDate)}</p>
+                          <p className="numeric whitespace-nowrap text-[12.5px]">{formatDate(d.updatedDate)}</p>
                           <p className="text-[11.5px] text-muted-foreground">by {d.updatedBy}</p>
                         </td>
                         <td className="px-3 py-3">
                           {d.expiryDate ? (
-                            <span className={cn("numeric text-[12.5px]", d.status === "Expired" && "text-danger")}>{formatDate(d.expiryDate)}</span>
+                            <span className={cn("numeric whitespace-nowrap text-[12.5px]", d.status === "Expired" && "text-danger")}>{formatDate(d.expiryDate)}</span>
                           ) : (
                             <span className="text-muted-foreground">—</span>
                           )}
