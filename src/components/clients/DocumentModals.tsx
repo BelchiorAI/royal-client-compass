@@ -89,7 +89,7 @@ export function UploadDocumentModal({ open, onClose, clientName }: { open: boole
       description={`Add a document to ${clientName}'s file.`}
       submitLabel="Upload"
       onSubmit={() => {
-        if (!title.trim()) return toast.error("Please give the document a title");
+        if (!title.trim()) { toast.error("Please give the document a title"); return; }
         toast.success("Document uploaded", { description: `${title} · ${category}${file ? ` · ${file.name}` : ""}` });
         setTitle("");
         setFile(null);
@@ -148,7 +148,7 @@ export function RequestDocumentModal({ open, onClose, clientName }: { open: bool
       description={`Send ${clientName} a secure upload request.`}
       submitLabel="Send request"
       onSubmit={() => {
-        if (!doc.trim()) return toast.error("Tell the client which document you need");
+        if (!doc.trim()) { toast.error("Tell the client which document you need"); return; }
         toast.success("Request sent", { description: `${doc}${due ? ` · due ${due}` : ""}` });
         setDoc("");
         setNote("");
@@ -197,7 +197,7 @@ export function SendForSignatureModal({
       description="Route a document for secure electronic signature."
       submitLabel="Send for signature"
       onSubmit={() => {
-        if (!email.includes("@")) return toast.error("Enter a valid signer email");
+        if (!email.includes("@")) { toast.error("Enter a valid signer email"); return; }
         const d = documents.find((x) => x.id === docId);
         toast.success("Sent for signature", { description: `${d?.name} → ${email}${aes ? " · AES" : ""}` });
         onClose();
